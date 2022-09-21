@@ -1,0 +1,14 @@
+a{
+    text-decoration: none;
+    
+}
+button{
+    cursor: pointer;
+}
+.fill{
+    color: rgb(251, 251, 251);
+    background-color: rgb(51, 51, 51);
+}
+body{
+    background-color: rgb(240, 240, 240);
+}
