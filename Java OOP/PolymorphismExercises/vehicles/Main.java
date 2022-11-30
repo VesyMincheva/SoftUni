@@ -8,15 +8,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String[] carData = scanner.nextLine().split("\\s+");
-        double carFuelQuantity = Double.parseDouble(carData[1]);
-        double carFuelConsumption = Double.parseDouble(carData[2]);
-        Vehicle car = new Car(carFuelQuantity, carFuelConsumption);
 
-        String[] truckData = scanner.nextLine().split("\\s+");
-        double truckFuelQuantity = Double.parseDouble(truckData[1]);
-        double truckFuelConsumption = Double.parseDouble(truckData[2]);
-        Vehicle truck = new Truck(truckFuelQuantity, truckFuelConsumption);
+        Vehicle car = getVehicle(scanner);
+        Vehicle truck = getVehicle(scanner);
 
         Map<String, Vehicle> vehicles = new LinkedHashMap<>();
         vehicles.put("Car", car);
@@ -41,5 +35,20 @@ public class Main {
         }
 
         vehicles.values().forEach(System.out::println);
+    }
+
+    private static Vehicle getVehicle (Scanner scanner){
+        String[] data = scanner.nextLine().split("\\s+");
+        String vehicleType = data[0];
+        double fuelQuantity = Double.parseDouble(data[1]);
+        double fuelConsumption = Double.parseDouble(data[2]);
+
+        switch (vehicleType){
+            case "Car":
+                return new Car(fuelQuantity, fuelConsumption);
+            case "Truck":
+                return new Truck(fuelQuantity, fuelConsumption);
+            default: throw new IllegalArgumentException("Missing vehicle");
+        }
     }
 }
