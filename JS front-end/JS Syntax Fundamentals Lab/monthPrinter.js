@@ -41,8 +41,4 @@ function solve (number){
 
     }
 }
-solve(1);
-solve(2);
-solve(-1);
-solve('a');
-solve(15);
+
